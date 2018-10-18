@@ -3,7 +3,7 @@ import tweepy
 from tweepy import OAuthHandler
 import textblob 
 
-class TwitterCliend(object):
+class TwitterClient(object):
 	'''generic twitter class for sentimental analysis'''
 	
 	def __init__(self):
@@ -84,8 +84,26 @@ class TwitterCliend(object):
 			print("Error:"+str(e))
 	
 			
+#main function
+def main():
+	#create object of TwitterClient Class
+	api = TwitterClient()
+	#calling functions to get tweets
+	tweets = api.get_tweets(query = 'Donald Trump', count = 200)
 	
-                                    
+	#picking positive tweets from tweets
+	ptweets = [tweet for tweet in tweets if tweet['sentiment']=='positive']
+	#percentage of positive tweets
+	print("Positive tweets percentage : {}%".format(100*len(ptweets)/len(tweets)))
+    
+    #picking negative tweets from tweets
+    ntweets = [tweet for tweet in tweets if tweet['sentiment'] == 'negative']
+    #percentage of negative tweets
+    print("Negative tweets percentage : {}%".format(100*len(ntweets)/len(tweets)))
+    
+    #percentage of neutral tweets
+    print("Neutral tweets percentage: {}% \".format(100*len(tweets - ntweets - ptweets)/len(tweets)))
+    
                                     
                                     
                                     
