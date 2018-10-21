@@ -28,28 +28,30 @@ file_lines = my_file.readlines()
 # Close file
 my_file.close()
 
-#create a for loop to iterate over file_lines
-for line in file_lines:
-	
-	#add try | except block to catch and output errorss
-	try:
-		print(line)
-	
-		#add an if statement to ensure that blank lines are not twetted
-		if line!='\n':
-			'''for every line to become a new tweet, we use tweepy 
-			function api.update_status()'''
-			api.update_status(line)
-	
-		#add an else statementwith pass to conclude the conditional statement
-		else:
-			pass
-		
-	except tweepy.TweepError as e:
-		print(e.reason)	
-	#add sleep method to space tweets time by 5 seconds each
-	sleep(400)
+def tweet():
+	#create a for loop to iterate over file_lines
+	for line in file_lines:
 
+	#add try | except block to catch and output errorss
+		try:
+			print(line)
+
+			#add an if statement to ensure that blank lines are not twetted
+			if line!='\n':
+				'''for every line to become a new tweet, we use tweepy 
+				function api.update_status()'''
+				api.update_status(line)
+
+			#add an else statementwith pass to conclude the conditional statement
+			else:
+				pass
+
+		except tweepy.TweepError as e:
+			print(e.reason)	
+		#add sleep method to space tweets time by 5 seconds each
+		sleep(400)
+
+tweet()
 
 
 
