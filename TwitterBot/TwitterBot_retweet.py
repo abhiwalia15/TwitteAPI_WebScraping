@@ -39,7 +39,7 @@ for tweet in tweepy.Cursor(api.search, q='#RealisticTattoo').items():
             tweet.user.follow()
             print('Followed the user')
 
-        sleep(5)
+        sleep(200)
 
     except tweepy.TweepError as e:
         print(e.reason)
