@@ -49,7 +49,7 @@ def tweet():
 		except tweepy.TweepError as e:
 			print(e.reason)	
 		#add sleep method to space tweets time by 5 seconds each
-		sleep(2)
+		sleep(5)
 
 tweet()
 
